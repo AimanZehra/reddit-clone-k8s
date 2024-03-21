@@ -2,10 +2,16 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/AimanZehra/reddit-clone-k8s.git'
+            }
+        }
+        
         stage('Terraform Init') {
             steps {
-                dir('Eks-terraform') {
-                    sh 'terraform init'
+                git branch: 'main', url: 'https://github.com/AimanZehra/reddit-clone-k8s.git'
                 }
             }
         }
